@@ -22,8 +22,6 @@ class Power(db.Model):
     __table_args__ = (
         db.CheckConstraint('length(description) >= 20'),
     )
-
-
 class HeroPower(db.Model):
     __tablename__ = 'hero_powers'
 
