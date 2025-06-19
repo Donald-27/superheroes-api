@@ -1,6 +1,7 @@
 from flask import Flask
 from .extensions import db
 from .models import Hero, Power, HeroPower
+from .routes import routes  # ✅ Import your routes blueprint
 
 def create_app():
     app = Flask(__name__)
@@ -9,5 +10,7 @@ def create_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     db.init_app(app)
+
+    app.register_blueprint(routes)  # ✅ Register the blueprint
 
     return app
