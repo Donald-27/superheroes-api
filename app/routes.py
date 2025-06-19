@@ -39,3 +39,14 @@ def get_hero(id):
     }), 200
 
 
+# c. GET /powers
+@routes.route('/powers', methods=['GET'])
+def get_powers():
+    powers = Power.query.all()
+    return jsonify([{
+        "id": p.id,
+        "name": p.name,
+        "description": p.description
+    } for p in powers]), 200
+
+
