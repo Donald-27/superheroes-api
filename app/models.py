@@ -10,3 +10,17 @@ class Hero(db.Model):
     hero_powers = db.relationship('HeroPower', back_populates='hero', cascade='all, delete-orphan')
 
 
+class Power(db.Model):
+    __tablename__ = 'powers'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+    description = db.Column(db.String, nullable=False)
+
+    hero_powers = db.relationship('HeroPower', back_populates='power', cascade='all, delete-orphan')
+
+    __table_args__ = (
+        db.CheckConstraint('length(description) >= 20'),
+    )
+
+
