@@ -50,3 +50,17 @@ def get_powers():
     } for p in powers]), 200
 
 
+# d. GET /powers/<int:id>
+@routes.route('/powers/<int:id>', methods=['GET'])
+def get_power(id):
+    power = Power.query.get(id)
+    if not power:
+        return jsonify({"error": "Power not found"}), 404
+
+    return jsonify({
+        "id": power.id,
+        "name": power.name,
+        "description": power.description
+    }), 200
+
+
