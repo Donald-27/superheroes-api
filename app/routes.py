@@ -4,7 +4,7 @@ from .extensions import db
 
 routes = Blueprint('routes', __name__)
 
-# a. GET /heroes
+
 @routes.route('/heroes', methods=['GET'])
 def get_heroes():
     heroes = Hero.query.all()
@@ -12,7 +12,6 @@ def get_heroes():
     return jsonify(result), 200
 
 
-# b. GET /heroes/<int:id>
 @routes.route('/heroes/<int:id>', methods=['GET'])
 def get_hero(id):
     hero = Hero.query.get(id)
@@ -39,7 +38,6 @@ def get_hero(id):
     }), 200
 
 
-# c. GET /powers
 @routes.route('/powers', methods=['GET'])
 def get_powers():
     powers = Power.query.all()
@@ -49,8 +47,6 @@ def get_powers():
         "description": p.description
     } for p in powers]), 200
 
-
-# d. GET /powers/<int:id>
 @routes.route('/powers/<int:id>', methods=['GET'])
 def get_power(id):
     power = Power.query.get(id)
@@ -63,8 +59,6 @@ def get_power(id):
         "description": power.description
     }), 200
 
-
-# e. PATCH /powers/<int:id>
 @routes.route('/powers/<int:id>', methods=['PATCH'])
 def update_power(id):
     power = Power.query.get(id)
@@ -84,7 +78,6 @@ def update_power(id):
     }), 200
 
 
-# f. POST /hero_powers
 @routes.route('/hero_powers', methods=['POST'])
 def create_hero_power():
     data = request.get_json()
@@ -121,3 +114,6 @@ def create_hero_power():
             "description": power.description
         }
     }), 201
+@routes.route('/')
+def home():
+    return {"message": " Welcome to the Superheroes API!"}, 200
