@@ -17,9 +17,11 @@ with app.app_context():
     p2 = Power(name="flight", description="gives the wielder the ability to fly through the skies at supersonic speed")
     p3 = Power(name="super human senses", description="allows the wielder to use her senses at a super-human level")
 
+
     hp1 = HeroPower(strength="Strong", hero=h1, power=p2)
     hp2 = HeroPower(strength="Average", hero=h1, power=p1)
     hp3 = HeroPower(strength="Weak", hero=h2, power=p3)
+
 
     db.session.add_all([h1, h2, h3, p1, p2, p3, hp1, hp2, hp3])
     db.session.commit()
