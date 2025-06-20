@@ -4,7 +4,6 @@ from .extensions import db
 
 routes = Blueprint('routes', __name__)
 
-
 @routes.route('/heroes', methods=['GET'])
 def get_heroes():
     heroes = Hero.query.all()
